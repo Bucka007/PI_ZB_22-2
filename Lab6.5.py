@@ -1,22 +1,19 @@
-def count_vowels(st):
-    vowels = ['a', 'e', 'i', 'o', 'u']
-    vowel_count = {vowel: 0 for vowel in vowels}
+students = [("Alice", 22, 4.5), ("Bob", 20, 3.8), ("Charlie", 21, 4.9), ("Diana", 23, 4.2)]
 
-    for char in st.lower():
-        if char in vowels:
-            vowel_count[char] += 1
+def best_student(students_list):
+    best = students_list[0]
+    for student in students_list:
+        if student[2] > best[2]:
+            best = student
+    return best
 
-    return [vowel_count[vowel] for vowel in vowels]
+test1 = best_student(students)
+print("Лучший студент:", test1[0])
 
-data = [
-    "Tuples (tuple type) are an immutable data type in Python that are used to store an ordered sequence of elements.",
-    "These collections have three great properties:",
-    "Immutability. Once a tuple is created, elements cannot be added to it, nor can they be modified or deleted. When you try to do this, the interpreter will throw a TypeError",
-    "Orderliness. The elements of a tuple are arranged in a certain order, which is also immutable. Any element can be accessed by its index (ordinal number).",
-    "The elements of a tuple can be objects of different data types: numbers, strings, lists, other tuples, and others. Collection elements can have unlimited nesting depth. For example, a tuple may contain a list, which will contain another list, which will again contain a list, and so on."
-]
+students.append(("Eve", 24, 4.7))
+test2 = best_student(students)
+print("Лучший студент после добавления Еve:", test2[0])
 
-for st in data:
-    print("Строка:", st)
-    print("Количество гласных:", count_vowels(st))
-    print()
+students.remove(test2)
+test3 = best_student(students)
+print("Лучший студент после удаления лучшего:", test3[0])
